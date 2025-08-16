@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bora sair?</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffe6f2;
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* evita barra de rolagem no celular */
+    }
+
+    .painel {
+      text-align: center;
+      max-width: 90%;
+    }
+
+    h1 {
+      color: #ff4d94;
+    }
+
+    h2 {
+      color: #666;
+      font-size: 1.2rem;
+    }
+
+    img {
+      width: 200px;
+      max-width: 70%;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      position: relative;
+      transition: left 0.3s ease, top 0.3s ease; /* animação suave */
+    }
+
+    #sim {
+      background-color: #ff4d94;
+      color: white;
+    }
+
+    #nao {
+      background-color: #666;
+      color: white;
+      position: absolute; /* necessário para movimentar */
+    }
+  </style>
+</head>
+<body>
+  <div class="painel">
+    <h1>Bora sair?</h1>
+    <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="Ursinho apaixonado">
+    <a href="https://youtu.be/Fxu-pE74m5A?si=wYSkGegGMHo77BD0">
+      <button id="sim">sim!</button>
+    </a>
+    <button id="nao">não</button>
+  </div>
+
+  <script>
+    function fuja() {
+      var botaoNao = document.getElementById("nao");
+
+      var larguraJanela = window.innerWidth;
+      var alturaJanela = window.innerHeight;
+
+      var maxX = larguraJanela - botaoNao.offsetWidth;
+      var maxY = alturaJanela - botaoNao.offsetHeight;
+
+      var aleatorioX = Math.floor(Math.random() * maxX);
+      var aleatorioY = Math.floor(Math.random() * maxY);
+
+      botaoNao.style.left = aleatorioX + 'px';
+      botaoNao.style.top = aleatorioY + 'px';
+    }
+
+    // Fugir no PC (mouse)
+    document.getElementById("nao").onmouseover = fuja;
+
+    // Fugir no celular (toque)
+    document.getElementById("nao").ontouchstart = fuja;
+    document.getElementById("nao").onclick = fuja;
+  </script>
+</body>
+</html>
